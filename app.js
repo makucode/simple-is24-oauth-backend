@@ -7,7 +7,7 @@ const app = express();
 
 dotenv.config();
 
-// OAuth1a
+// OAuth1a / oauthsimple
 
 const oauth = new OAuthSimple(
     process.env.CONSUMER_KEY,
@@ -25,7 +25,7 @@ const request = oauth.sign({
     },
 });
 
-// Request
+// Route
 
 app.get("/", async (req, res) => {
     try {
@@ -35,12 +35,11 @@ app.get("/", async (req, res) => {
 
         return res.status(200).json(data);
     } catch (error) {
-        console.log("HÖHÖ");
         return res.status(500).json(error);
     }
 });
 
-//
+// Startup
 
 const PORT = process.env.PORT || 3002;
 
